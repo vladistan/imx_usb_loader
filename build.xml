@@ -59,11 +59,11 @@
         <fileset dir="${pmd.install.dir}" includes="*.jar" />
       </classpath>
     </taskdef>
-    <cpd minimumTokenCount="10" 
+    <cpd minimumTokenCount="20" 
          language="cpp" 
          outputFile="${output.dir}/cpd.xml"
-         ignoreLiterals="false"
-         ignoreIdentifiers="false"
+         ignoreLiterals="true"
+         ignoreIdentifiers="true"
          format="xml">
         <fileset dir=".">
             <include name="**/*.h"/>
