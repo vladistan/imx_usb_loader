@@ -14,6 +14,9 @@
 <property name="pmd.version" value="5.1.0" />
 <property name="pmd.install.dir" location="${lib.dir}/pmd" />
 
+<property name="cppncss.version" value="1.0.5" />
+<property name="cppncss.install.dir" location="${lib.dir}/cppncss" />
+
 <property name="pmd.dir" location="${build.dir}/pmd" />
 <property name="pmd.failonerror" value="false" />
 
@@ -52,8 +55,20 @@
   </target>
 
 
-<target name="cpd" depends="install-pmd" >
+   
+
+   <target name="install-cppncss" depends="install-ivy">
+    <ivy:retrieve module="cppncss" organisation="net.sourceforge.cppncss" revision="${cppncss.version}" pattern="${lib.dir}/cppncss/[artifact].[ext]" sync="true" inline="true" log="download-only" type="jar"/>
+  </target>
+<!--
+http://sourceforge.net/projects/cppncss/files/cppncss/1.0.3/cppncss-1.0.3.zip/download
+-->
+
+<target name="mk-target-dir">
     <mkdir dir="${output.dir}"/>
+</target>
+
+<target name="cpd" depends="install-pmd,mk-target-dir" >
     <taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask">
 	 <classpath>
         <fileset dir="${pmd.install.dir}" includes="*.jar" />
@@ -73,6 +88,18 @@
             <exclude name="cppunit/"/>
         </fileset>
     </cpd>
+</target>
+
+<target name="cppncss" depends="install-cppncss,install-pmd,mk-target-dir">
+<taskdef name="cppncss" classname="cppncss.CppNcssTask">
+  <classpath>
+    <fileset dir="${cppncss.install.dir}" includes="*.jar" />
+    <fileset dir="${pmd.install.dir}" includes="*.jar" />
+  </classpath>
+</taskdef>
+<cppncss tofile="target/cppncss.xml" samples="900">
+  <fileset dir="."/>
+</cppncss>
 </target>
 
 </project>
