@@ -2,3 +2,10 @@
 imx_usb
 imx_usb.lds
 *.bin
+
+/target/
+
+/lib/
+/ivy/
+
+.*.swp
