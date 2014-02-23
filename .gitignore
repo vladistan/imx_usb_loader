@@ -12,3 +12,11 @@ imx_usb.lds
 
 /.vagrant/
 /test
+
+*.gcno
+
+*.gcda
+
+/coverage.xml
+
+cpputest_*.xml
