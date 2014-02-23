@@ -9,3 +9,5 @@ imx_usb.lds
 /ivy/
 
 .*.swp
+
+/.vagrant/
