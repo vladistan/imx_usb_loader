@@ -2,6 +2,7 @@ all: imx_usb
 
 BUILDHOST := $(shell uname -s)
 BUILDHOST := $(patsubst CYGWIN_%,CYGWIN,$(BUILDHOST))
+.PHONY: test
 
 ifneq ($(BUILDHOST),CYGWIN)
 CFLAGS = `pkg-config --cflags libusb-1.0`
