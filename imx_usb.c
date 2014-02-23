@@ -1650,6 +1650,8 @@ err1:
 
 #define ARRAY_SIZE(w) sizeof(w)/sizeof(w[0])
 
+#ifdef MAIN
+
 int main(int argc, char const *const argv[])
 {
 	struct usb_id *p_id;
@@ -1816,3 +1818,4 @@ out:
 	libusb_exit(NULL);
 	return ret;
 }
+#endif
