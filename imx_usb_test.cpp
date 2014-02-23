@@ -52,7 +52,15 @@ TEST(ParsingTest,EndOfLineNewLineAndSpaces)
     LONGS_EQUAL(1,end_of_line("  \nHello"));
 };
 
+TEST(ParsingTest,EndOfLineCRAndSpaces)
+{
+    LONGS_EQUAL(1,end_of_line("  \rHello"));
+};
 
+TEST(ParsingTest,EndOfLineNegative)
+{
+    LONGS_EQUAL(0,end_of_line("Hello  \rHello"));
+};
 
 int main(int ac, char** av)
 {
