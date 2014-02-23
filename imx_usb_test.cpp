@@ -1,8 +1,10 @@
 #include <CppUTest/CommandLineTestRunner.h>
 #include <CppUTest/JUnitTestOutput.h>
+#include <stdio.h>
 
 extern "C" {
 int end_of_line(char *);
+int get_file_size(FILE *);
 }
 
 TEST_GROUP(FirstTestGroup)
@@ -18,6 +20,10 @@ TEST(FirstTestGroup, FirstTest)
 }
 
 TEST_GROUP(ParsingTest)
+{
+};
+
+TEST_GROUP(FileRoutines)
 {
 };
 
@@ -59,8 +65,17 @@ TEST(ParsingTest,EndOfLineCRAndSpaces)
 
 TEST(ParsingTest,EndOfLineNegative)
 {
-    LONGS_EQUAL(0,end_of_line("Hello  \rHello"));
+    LONGS_EQUAL(0, end_of_line("Hello  \rHello"));
 };
+
+
+TEST(FileRoutines,FileSize)
+{
+    FILE * f = fopen("test_data/bFile.test","rb");
+    LONGS_EQUAL(45451, get_file_size(f));
+};
+
+
 
 int main(int ac, char** av)
 {
