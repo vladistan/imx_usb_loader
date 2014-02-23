@@ -10,8 +10,8 @@ else
 CFLAGS = -I/usr/include/libusb-1.0
 endif
 
-CFLAGS += -g -pg -fprofile-arcs -ftest-coverage
-CXXFLAGS += -g -pg -fprofile-arcs -ftest-coverage
+CFLAGS += -g -pg -fprofile-arcs -ftest-coverage -Wno-write-strings
+CXXFLAGS += -g -pg -fprofile-arcs -ftest-coverage -Wno-write-strings
 
 %.o : %.cpp
 	$(CC) -c $*.cpp -o $@ -Wno-trigraphs -pipe -ggdb -Wall $(CFLAGS)
