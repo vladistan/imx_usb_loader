@@ -31,7 +31,7 @@ clean:
 
 
 CXXFLAGS += -I/usr/local/include/
-test: imx_usb_test.o
+test: imx_usb_test.o imx_usb.o
 	$(CXX) -o $@ $<  -lCppUTest --coverage
 	./test -ojunit
 
