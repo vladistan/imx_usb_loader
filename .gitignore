@@ -11,3 +11,4 @@ imx_usb.lds
 .*.swp
 
 /.vagrant/
+/test
