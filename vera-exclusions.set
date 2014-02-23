@@ -1,0 +1,10 @@
+set ruleExclusions(L002) {
+    imx_usb.c
+}
+
+set ruleExclusions(T005) {
+    some_file.cpp
+    some_other_file.cpp
+}
+
+
