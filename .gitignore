@@ -20,3 +20,5 @@ imx_usb.lds
 /coverage.xml
 
 cpputest_*.xml
+
+/vera.xml
