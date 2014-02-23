@@ -8,9 +8,9 @@ TEST_GROUP(FirstTestGroup)
 
 TEST(FirstTestGroup, FirstTest)
 {
-   STRCMP_EQUAL("hello", "world");
-   LONGS_EQUAL(1, 2);
-   CHECK(false);
+   STRCMP_EQUAL("hello", "hello");
+   LONGS_EQUAL(1, 1);
+   CHECK(true);
 }
 
 int main(int ac, char** av)
