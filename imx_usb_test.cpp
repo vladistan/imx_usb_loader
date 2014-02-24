@@ -32,6 +32,11 @@ TEST_GROUP(ConfFileName)
 {
 };
 
+TEST_GROUP(ParseImxConf)
+{
+};
+
+
 
 
 TEST(ParsingTest,EndOfLineOnEmptyLine)
@@ -115,6 +120,19 @@ TEST(ConfFileName, BasicTest) {
     STRCMP_EQUAL( "./imx_usb.conf", rv );
 }
 
+TEST(ParseImxConf, BasicTest){
+    struct mach_id * list = parse_imx_conf("imx_usb.conf",0,NULL);
+
+    struct mach_id * l1 = list;
+    LONGS_EQUAL(list[0].vid, 0x066f );
+    LONGS_EQUAL(list[0].pid, 0x3780 );
+
+    l1 = list->next;
+    LONGS_EQUAL(l1[0].vid, 0x15a2 );
+    LONGS_EQUAL(l1[0].pid, 0x004f );
+
+
+}
 
 int main(int ac, char** av)
 {
