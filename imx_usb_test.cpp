@@ -84,6 +84,29 @@ TEST(ImxDevice,WorksCorrectlyWhenNothingPassed)
 }
 
 
+TEST(ImxDevice,ShouldReturnNullWhenDeviceIsNotInTheList)
+{
+    struct mach_id tst[] =  {
+	 { &tst[1], 1, 1, "Hello" },
+	 { &tst[2], 1, 1, "imx6" },
+	 { NULL, 1, 1, "imx5" },
+       };
+	
+    POINTERS_EQUAL(NULL, imx_device(0x15a2,0x004e,tst));
+}
+
+TEST(ImxDevice,ShouldReturnDeviceWhenItIsInTheList)
+{
+    struct mach_id tst[] =  {
+	 { &tst[1], 1, 1, "Hello" },
+	 { &tst[2], 0x15a2, 0x004e, "imx6" },
+	 { NULL, 1, 1, "imx5" },
+       };
+	
+    POINTERS_EQUAL(&tst[1], imx_device(0x15a2,0x004e,tst));
+}
+
+
 int main(int ac, char** av)
 {
     return CommandLineTestRunner::RunAllTests(ac, av);
