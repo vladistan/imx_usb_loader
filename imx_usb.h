@@ -18,6 +18,7 @@ struct mach_id * imx_device(unsigned short vid, unsigned short pid, struct mach_
 
 char const *conf_file_name (char const *base, int argc, char const * const *argv);
 
+struct mach_id *parse_imx_conf (char *filename, int argc, char const *const *argv);
 
 
 #ifdef __cplusplus
