@@ -33,6 +33,5 @@ clean:
 
 test: imx_usb_test.o imx_usb.o
 	$(CXX) -o $@ $^  -lCppUTest -lusb-1.0 --coverage
-	./test -ojunit
 
 
