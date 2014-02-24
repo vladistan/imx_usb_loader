@@ -6,6 +6,7 @@ BUILDHOST := $(patsubst CYGWIN_%,CYGWIN,$(BUILDHOST))
 
 ifneq ($(BUILDHOST),CYGWIN)
 CFLAGS = `pkg-config --cflags libusb-1.0`
+CXXFLAGS += -I/usr/local/include/
 else
 CFLAGS = -I/usr/include/libusb-1.0
 endif
@@ -30,7 +31,6 @@ clean:
 	rm -f imx_usb imx_usb.o imx_usb_test.o test
 
 
-CXXFLAGS += -I/usr/local/include/
 test: imx_usb_test.o imx_usb.o
 	$(CXX) -o $@ $^  -lCppUTest -lusb-1.0 --coverage
 	./test -ojunit

@@ -1,11 +1,8 @@
 #include <CppUTest/CommandLineTestRunner.h>
 #include <CppUTest/JUnitTestOutput.h>
 #include <stdio.h>
+#include "imx_usb.h"
 
-extern "C" {
-int end_of_line(char *);
-int get_file_size(FILE *);
-}
 
 TEST_GROUP(FirstTestGroup)
 {
@@ -26,6 +23,11 @@ TEST_GROUP(ParsingTest)
 TEST_GROUP(FileRoutines)
 {
 };
+
+TEST_GROUP(ImxDevice)
+{
+};
+
 
 
 TEST(ParsingTest,EndOfLineOnEmptyLine)
@@ -75,6 +77,11 @@ TEST(FileRoutines,FileSize)
     LONGS_EQUAL(45451, get_file_size(f));
 };
 
+
+TEST(ImxDevice,WorksCorrectlyWhenNothingPassed)
+{
+    LONGS_EQUAL(NULL, imx_device(0x15a2,0x004e,NULL));
+}
 
 
 int main(int ac, char** av)

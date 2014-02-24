@@ -32,6 +32,8 @@
 
 #include <libusb-1.0/libusb.h>
 
+#include "imx_usb.h"
+
 #define get_min(a, b) (((a) < (b)) ? (a) : (b))
 
 struct mach_id;
@@ -521,7 +523,7 @@ static struct usb_id *parse_conf
 	return usb;
 }
 
-static struct mach_id * imx_device(unsigned short vid, unsigned short pid, struct mach_id *p)
+struct mach_id * imx_device(unsigned short vid, unsigned short pid, struct mach_id *p)
 {
 //	printf("%s: vid=%x pid=%x\n", __func__, vid, pid);
 	while (p) {
