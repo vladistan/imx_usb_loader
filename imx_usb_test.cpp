@@ -28,6 +28,10 @@ TEST_GROUP(ImxDevice)
 {
 };
 
+TEST_GROUP(ConfFileName)
+{
+};
+
 
 
 TEST(ParsingTest,EndOfLineOnEmptyLine)
@@ -104,6 +108,11 @@ TEST(ImxDevice,ShouldReturnDeviceWhenItIsInTheList)
        };
 	
     POINTERS_EQUAL(&tst[1], imx_device(0x15a2,0x004e,tst));
+}
+
+TEST(ConfFileName, BasicTest) {
+    const char * rv = conf_file_name("imx_usb.conf",0,NULL);
+    STRCMP_EQUAL( "./imx_usb.conf", rv );
 }
 
 
