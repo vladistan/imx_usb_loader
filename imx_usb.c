@@ -36,13 +36,6 @@
 
 #define get_min(a, b) (((a) < (b)) ? (a) : (b))
 
-struct mach_id;
-struct mach_id {
-	struct mach_id * next;
-	unsigned short vid;
-	unsigned short pid;
-	unsigned char file_name[256];
-};
 
 static void print_devs(libusb_device **devs)
 {
