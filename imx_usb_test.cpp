@@ -98,7 +98,7 @@ TEST(ImxDevice,ShouldReturnNullWhenDeviceIsNotInTheList)
 TEST(ImxDevice,ShouldReturnDeviceWhenItIsInTheList)
 {
     struct mach_id tst[] =  {
-	 { &tst[1], 1, 1, "Hello" },
+	 { &tst[1], 0x15a2, 1, "Hello" },
 	 { &tst[2], 0x15a2, 0x004e, "imx6" },
 	 { NULL, 1, 1, "imx5" },
        };
