@@ -136,10 +136,7 @@ const unsigned char *move_string(unsigned char *dest, const unsigned char *src, 
 	return src;
 }
 
-static char const *conf_file_name
-	(char const *base,
-	 int argc,
-	 char const * const *argv)
+char const *conf_file_name (char const *base, int argc, char const * const *argv)
 {
 	static char conf_path[512];
 	char *e;
@@ -167,10 +164,7 @@ static char const *conf_file_name
 	return conf_path;
 }
 
-static struct mach_id *parse_imx_conf
-	(char *filename,
-	 int argc,
-	 char const *const *argv)
+static struct mach_id *parse_imx_conf (char *filename, int argc, char const *const *argv)
 {
 	unsigned short vid;
 	unsigned short pid;
