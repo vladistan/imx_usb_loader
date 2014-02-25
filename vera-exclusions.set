@@ -1,5 +1,6 @@
 set ruleExclusions(L002) {
     imx_usb.c
+    imx_usb_test.cpp
 }
 
 set ruleExclusions(T005) {
